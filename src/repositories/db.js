@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
-const MainDbConnection = DB_URL => {
+const DbConnection = DB_URL => {
   try {
     const db = mongoose.createConnection(DB_URL, {
       socketTimeoutMS: 30000,
@@ -12,7 +12,7 @@ const MainDbConnection = DB_URL => {
       useFindAndModify: false,
       useCreateIndex: true
     });
-s
+
     db.on("connected", () => {
       console.log("Mongoose default connection open");
     });

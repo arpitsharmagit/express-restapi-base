@@ -10,12 +10,10 @@ const {parsePort} = require('./src/shared/utils/common');
 const port = parsePort(process.env.PORT || '4001');
 app.set('port', port);
 
-const server = http.createServer(function(req, res){
-    debug(req.method + ' ' + req.url);
-    res.end('hello\n');
-  });
+const server = http.createServer(app);
 
-server.on('error', (error) => {
+server.on('error', function (error) {
+    console.log(error);
     if (error.syscall !== 'listen') {
         throw error;
     }
@@ -45,6 +43,10 @@ server.on('listening', () => {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
     console.log('Listening on ' + bind);
+});
+
+process.on('uncaughtException', function( err ) {
+    console.error(err.stack);
 });
 
 process.on("SIGINT", () => {
