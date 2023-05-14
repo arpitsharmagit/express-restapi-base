@@ -1,0 +1,41 @@
+{
+  "name": "express-restapi-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon --signal SIGTERM nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpitsharmagit/express-restapi-base.git"
+  },
+  "keywords": [
+    "express",
+    "respapi",
+    "sql"
+  ],
+  "author": "arpitsharma1282@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arpitsharmagit/express-restapi-base/issues"
+  },
+  "homepage": "https://github.com/arpitsharmagit/express-restapi-base#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "jest": "^29.5.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22"
+  }
+}
