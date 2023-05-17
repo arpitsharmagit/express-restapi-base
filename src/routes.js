@@ -1,5 +1,6 @@
 const path = require('path');
 const apiVersionManager = require('./shared/utils/apiVersionManager');
+const { response } = require('./app');
 
 const registerAPIRoutes = (app) => {
     const config = {
@@ -9,6 +10,9 @@ const registerAPIRoutes = (app) => {
         instance: app
       };
     app.use(apiVersionManager(config, (error, req, res, next) => {
+        console.log(error);
+        console.log(req);
+        console.log(res);
         next();
     }));
 }

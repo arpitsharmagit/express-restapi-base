@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "start": "nodemon --signal SIGTERM nodemon server.js"
   },
   "repository": {
@@ -37,6 +37,8 @@
     "mongoose": "^7.1.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3"
   }
 }

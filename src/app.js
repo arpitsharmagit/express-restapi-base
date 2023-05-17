@@ -1,17 +1,19 @@
-const createError = require('http-errors');
 const express = require('express');
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const helmet = require("helmet");
 const cors = require("cors");
 const registerAPIRoutes = require('./routes');
+const { options } = require('./swaggerOptions');
 const app = express();
 
 
 app.use(helmet());
 app.use(cors());
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,17 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 registerAPIRoutes(app);
 
-app.use(function (req, res, next) {
-    next(createError(404));
-});
-
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-        status: 'error',
-        data: err.message,
-        message: 'Something went wrong!!! Please try again later.'
-    });
-});
+const specs = swaggerJsdoc(options);
+app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(specs, { explorer: true })
+);
 
 module.exports = app;

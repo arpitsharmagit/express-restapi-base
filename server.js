@@ -3,7 +3,7 @@ global.appRoot = path.resolve(__dirname);
 
 const app = require('./src/app');
 const mongoose = require('mongoose');
-const debug = require('debug')('http');
+const debug = require('debug')('express-restapi-base');
 const http = require('http');
 const {parsePort} = require('./src/shared/utils/common');
 
